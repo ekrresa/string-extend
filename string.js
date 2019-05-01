@@ -3,16 +3,16 @@ String.prototype.hasVowels = function() {
 };
 
 String.prototype.toUpper = function() {
-  let output = [];
+  var output = "";
   for (var char of this) {
     if (/[a-z]/.test(char)) {
       upperCaseCharCode = char.charCodeAt() - 32;
-      output.push(String.fromCharCode(upperCaseCharCode));
+      output += String.fromCharCode(upperCaseCharCode);
       continue;
     }
-    output.push(char);
+    output += char;
   }
-  return output.join("");
+  return output;
 };
 
 module.exports = String.prototype;
