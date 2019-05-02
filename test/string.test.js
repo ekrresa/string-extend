@@ -33,4 +33,8 @@ describe("String method tests", function() {
     expect("my name is?".isQuestion()).toBe(true);
     expect("3242342134 432434".isQuestion()).toBe(false);
   });
+
+  test("should get all words in a string", function() {
+    expect("The Quick brown fox".words()).toContain("Quick");
+  });
 });

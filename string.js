@@ -22,6 +22,10 @@ String.prototype.isQuestion = function() {
   return this.match(/\?$/) !== null ? true : false;
 };
 
+String.prototype.words = function() {
+  return this.match(/\b\w+\b/g);
+};
+
 function changeCase(signedNum) {
   var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;
   var output = "";
