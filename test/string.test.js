@@ -69,4 +69,10 @@ describe("String method tests", function() {
     expect("1,111".fromCurrency()).toBe(1111);
     expect("11.11".fromCurrency()).toEqual("valid string must have commas");
   });
+
+  test("should change case of letters", function() {
+    expect("mr. BeN".inverseCase()).toBe("MR. bEn");
+    expect("mIkE is 25.".inverseCase()).toBe("MiKe IS 25.");
+    expect("2324 423742".inverseCase()).toBe("valid string must contain letters");
+  });
 });

@@ -57,6 +57,29 @@ String.prototype.fromCurrency = function() {
   return "valid string must have commas";
 };
 
+String.prototype.inverseCase = function() {
+  var regex = /[a-z]/gi;
+  var output = "";
+
+  if (regex.test(this)) {
+    for (const char of this) {
+      if (/[A-Z]/.test(char)) {
+        output += char.toLower();
+        continue;
+      }
+      if (/[a-z]/.test(char)) {
+        output += char.toUpper();
+        continue;
+      }
+      output += char;
+    }
+  } else {
+    return "valid string must contain letters";
+  }
+
+  return output;
+};
+
 String.prototype.numberWords = function() {
   var numberList = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
   var matches = this.match(/\d/g);
