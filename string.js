@@ -11,11 +11,11 @@ String.prototype.toLower = function() {
 
 String.prototype.ucFirst = function() {
   var match = this.match(/^[a-z]/);
-  if (match) {
-    var result = match[0].toUpper() + this.slice(1);
-    return result;
+  if (!match) {
+    throw "Error: String must begin with an alphabet";
   }
-  throw "Error: String must begin with an alphabet";
+  var result = match[0].toUpper() + this.slice(1);
+  return result;
 };
 
 String.prototype.isQuestion = function() {
@@ -61,20 +61,60 @@ String.prototype.inverseCase = function() {
   var regex = /[a-z]/gi;
   var output = "";
 
-  if (regex.test(this)) {
-    for (const char of this) {
-      if (/[A-Z]/.test(char)) {
-        output += char.toLower();
-        continue;
-      }
-      if (/[a-z]/.test(char)) {
-        output += char.toUpper();
-        continue;
-      }
-      output += char;
-    }
-  } else {
+  if (!regex.test(this)) {
     return "valid string must contain letters";
+  }
+  for (const char of this) {
+    if (/[A-Z]/.test(char)) {
+      output += char.toLower();
+      continue;
+    }
+    if (/[a-z]/.test(char)) {
+      output += char.toUpper();
+      continue;
+    }
+    output += char;
+  }
+
+  return output;
+};
+
+String.prototype.alternatingCase = function() {
+  var output = "";
+
+  var wordArray = this.split("");
+  var len = wordArray.length;
+  var charCase = "";
+
+  for (let index = 0; index < len; index++) {
+    //Check if letter is at beginning of string
+    if (index === 0 && isLetter(wordArray[index])) {
+      output += wordArray[index].toLower();
+      charCase = "lower";
+      continue;
+    }
+
+    //Check if space behind letter
+    if (isLetter(wordArray[index]) && wordArray[index - 1] === " ") {
+      output += wordArray[index].toLower();
+      charCase = "lower";
+      continue;
+    }
+
+    //Check is previous letter is of lowercase
+    if (isLetter(wordArray[index]) && charCase === "lower") {
+      output += wordArray[index].toUpper();
+      charCase = "upper";
+      continue;
+    }
+
+    //Check is previous letter is of uppercase
+    if (isLetter(wordArray[index]) && charCase === "upper") {
+      output += wordArray[index].toLower();
+      charCase = "lower";
+      continue;
+    }
+    output += wordArray[index];
   }
 
   return output;
@@ -109,13 +149,17 @@ function changeCase(signedNum) {
 
   for (var char of this) {
     if (regex.test(char)) {
-      CaseCharCode = char.charCodeAt() + signedNum;
-      output += String.fromCharCode(CaseCharCode);
+      caseCharCode = char.charCodeAt() + signedNum;
+      output += String.fromCharCode(caseCharCode);
       continue;
     }
     output += char;
   }
   return output;
+}
+
+function isLetter(letter) {
+  return /[a-z]/i.test(letter);
 }
 
 module.exports = String.prototype;

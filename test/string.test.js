@@ -75,4 +75,10 @@ describe("String method tests", function() {
     expect("mIkE is 25.".inverseCase()).toBe("MiKe IS 25.");
     expect("2324 423742".inverseCase()).toBe("valid string must contain letters");
   });
+
+  test("should change case of letters", function() {
+    expect("mr. BeN".alternatingCase()).toBe("mR. bEn");
+    expect("Onomatopoeia".alternatingCase()).toBe("oNoMaToPoEiA");
+    expect("boy is girl".alternatingCase()).toBe("bOy iS gIrL");
+  });
 });
