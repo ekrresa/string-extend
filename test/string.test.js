@@ -17,4 +17,11 @@ describe("String method tests", function() {
     expect("ESTHER SEYI OCHUKO".toLower()).toBe("esther seyi ochuko");
     expect("WHy So 453sdj SERious".toLower()).toBe("why so 453sdj serious");
   });
+  test("should convert first character of string to uppercase", function() {
+    expect("ochuko".ucFirst()).toBe("Ochuko");
+    expect("esther seyi".ucFirst()).toBe("Esther seyi");
+    expect(function() {
+      return "1Hy So 453sdj SERious".ucFirst();
+    }).toThrow();
+  });
 });
