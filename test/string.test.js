@@ -41,4 +41,11 @@ describe("String method tests", function() {
     expect("The Quick brown fox".wordCount()).toBe(4);
     expect(" ".wordCount()).toBe(0);
   });
+
+  test("should get all numbers in a string in their word form", function() {
+    expect("032510".numberWords()).toBe("zero three two five one zero");
+    expect("i am 53years old and 6ft tall.".numberWords()).toBe("five three six");
+    expect("The Quick brown fox".numberWords()).toBe("no numbers in string");
+    expect(" ".numberWords()).toBe("no numbers in string");
+  });
 });

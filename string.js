@@ -30,6 +30,23 @@ String.prototype.wordCount = function() {
   return this.words() === null ? 0 : this.words().length;
 };
 
+String.prototype.numberWords = function() {
+  var numberList = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+  var matches = this.match(/\d/g);
+  var result = [];
+
+  if (matches) {
+    for (const number of matches) {
+      result.push(numberList[+number]);
+    }
+    return result.join(" ");
+  }
+
+  return "no numbers in string";
+};
+
+String.prototype.isDigit = function() {};
+
 function changeCase(signedNum) {
   var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;
   var output = "";
