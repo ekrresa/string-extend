@@ -23,9 +23,7 @@ describe("String method tests", function() {
   test("should convert first character of string to uppercase", function() {
     expect("ochuko".ucFirst()).toBe("Ochuko");
     expect("esther seyi".ucFirst()).toBe("Esther seyi");
-    expect(function() {
-      return "1Hy So 453sdj SERious".ucFirst();
-    }).toThrow();
+    expect("1Hy So 453sdj SERious".ucFirst).toThrow();
   });
 
   test("should convert check if string issa question", function() {
