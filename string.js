@@ -26,6 +26,10 @@ String.prototype.words = function() {
   return this.match(/\b\w+\b/g);
 };
 
+String.prototype.wordCount = function() {
+  return this.words() === null ? 0 : this.words().length;
+};
+
 function changeCase(signedNum) {
   var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;
   var output = "";

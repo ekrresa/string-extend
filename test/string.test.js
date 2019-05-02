@@ -34,5 +34,11 @@ describe("String method tests", function() {
 
   test("should get all words in a string", function() {
     expect("The Quick brown fox".words()).toContain("Quick");
+    expect(" ".words()).toBe(null);
+  });
+
+  test("should get number of words in a string", function() {
+    expect("The Quick brown fox".wordCount()).toBe(4);
+    expect(" ".wordCount()).toBe(0);
   });
 });
