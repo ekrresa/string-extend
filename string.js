@@ -81,12 +81,12 @@ String.prototype.alternatingCase = function() {
   var output = "";
 
   var wordArray = this.split("");
-  var len = wordArray.length;
+  var wordArrayLength = wordArray.length;
   var charCase = "";
 
-  for (let index = 0; index < len; index++) {
+  for (let index = 0; index < wordArrayLength; index++) {
     //Check if letter is at beginning of string
-    if (index === 0 && isLetter(wordArray[index])) {
+    if (!index && isLetter(wordArray[index])) {
       output += wordArray[index].toLower();
       charCase = "lower";
       continue;
@@ -123,14 +123,14 @@ String.prototype.numberWords = function() {
   var matches = this.match(/\d/g);
   var result = [];
 
-  if (matches) {
-    for (const number of matches) {
-      result.push(numberList[+number]);
-    }
-    return result.join(" ");
+  if (!matches) {
+    return "no numbers in string";
   }
 
-  return "no numbers in string";
+  for (const number of matches) {
+    result.push(numberList[+number]);
+  }
+  return result.join(" ");
 };
 
 String.prototype.isDigit = function() {
