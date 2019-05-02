@@ -45,7 +45,13 @@ String.prototype.numberWords = function() {
   return "no numbers in string";
 };
 
-String.prototype.isDigit = function() {};
+String.prototype.isDigit = function() {
+  var match = this.match(/\d/g);
+  if (match) {
+    return match.length === 1 ? true : false;
+  }
+  return false;
+};
 
 function changeCase(signedNum) {
   var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;

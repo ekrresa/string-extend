@@ -48,4 +48,11 @@ describe("String method tests", function() {
     expect("The Quick brown fox".numberWords()).toBe("no numbers in string");
     expect(" ".numberWords()).toBe("no numbers in string");
   });
+
+  test("should check of string is a digit", function() {
+    expect("3".isDigit()).toBe(true);
+    expect("34".isDigit()).toBe(false);
+    expect(" ".isDigit()).toBe(false);
+    expect("Quick".isDigit()).toBe(false);
+  });
 });
