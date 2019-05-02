@@ -55,4 +55,18 @@ describe("String method tests", function() {
     expect(" ".isDigit()).toBe(false);
     expect("Quick".isDigit()).toBe(false);
   });
+
+  test("should add commas to numbers", function() {
+    expect("111111.11".toCurrency()).toBe("111,111.11");
+    expect("11.11".toCurrency()).toEqual("11.11");
+    expect(".11".toCurrency()).toEqual(
+      "valid string is numbers with/without 2 decimal numbers minimum"
+    );
+  });
+
+  test("should remove commas from currencies", function() {
+    expect("111,111.11".fromCurrency()).toBe(111111.11);
+    expect("1,111".fromCurrency()).toBe(1111);
+    expect("11.11".fromCurrency()).toEqual("valid string must have commas");
+  });
 });

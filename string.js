@@ -30,6 +30,33 @@ String.prototype.wordCount = function() {
   return this.words() === null ? 0 : this.words().length;
 };
 
+String.prototype.toCurrency = function() {
+  var regex = /^(\d+)(\.\d{2,})?$/;
+  var match = this.match(regex);
+
+  if (!match) {
+    return "valid string is numbers with/without 2 decimal numbers minimum";
+  }
+
+  if (match && match[1].length >= 4) {
+    var beforeDecimal = match[1].replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+  } else {
+    return this;
+  }
+
+  return match[2] !== undefined ? beforeDecimal + match[2] : beforeDecimal;
+};
+
+String.prototype.fromCurrency = function() {
+  var regex = /^\d{1,3}(,\d{3})+(\.\d{2})?$/;
+  var match = regex.test(this);
+
+  if (match) {
+    return +this.replace(/\,/g, "");
+  }
+  return "valid string must have commas";
+};
+
 String.prototype.numberWords = function() {
   var numberList = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
   var matches = this.match(/\d/g);
