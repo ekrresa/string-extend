@@ -1,0 +1,23 @@
+{
+  "name": "string-extend",
+  "version": "1.0.0",
+  "description": "Extend String class with more methods",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuck-huey/string-extend.git"
+  },
+  "keywords": [],
+  "author": "Ochuko Ekrresa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chuck-huey/string-extend/issues"
+  },
+  "homepage": "https://github.com/chuck-huey/string-extend#readme",
+  "dependencies": {
+    "jest": "^24.7.1"
+  }
+}
