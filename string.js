@@ -3,28 +3,25 @@ String.prototype.hasVowels = function() {
 };
 
 String.prototype.toUpper = function() {
-  var output = "";
-  for (var char of this) {
-    if (/[a-z]/.test(char)) {
-      upperCaseCharCode = char.charCodeAt() - 32;
-      output += String.fromCharCode(upperCaseCharCode);
-      continue;
-    }
-    output += char;
-  }
-  return output;
+  return changeCase.call(this, -32);
 };
 String.prototype.toLower = function() {
+  return changeCase.call(this, 32);
+};
+
+function changeCase(signedNum) {
+  var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;
   var output = "";
+
   for (var char of this) {
-    if (/[A-Z]/.test(char)) {
-      lowerCaseCharCode = char.charCodeAt() + 32;
-      output += String.fromCharCode(lowerCaseCharCode);
+    if (regex.test(char)) {
+      CaseCharCode = char.charCodeAt() + signedNum;
+      output += String.fromCharCode(CaseCharCode);
       continue;
     }
     output += char;
   }
   return output;
-};
+}
 
 module.exports = String.prototype;
