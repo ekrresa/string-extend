@@ -19,7 +19,7 @@ String.prototype.ucFirst = function() {
 };
 
 String.prototype.isQuestion = function() {
-  return this.match(/\?$/) !== null ? true : false;
+  return /\?$/.test(this) !== false ? true : false;
 };
 
 String.prototype.words = function() {
@@ -38,20 +38,18 @@ String.prototype.toCurrency = function() {
     return "valid string is numbers with/without 2 decimal numbers minimum";
   }
 
-  if (match && match[1].length >= 4) {
+  if (match[1].length >= 4) {
     var beforeDecimal = match[1].replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-  } else {
-    return this;
+    return match[2] !== undefined ? beforeDecimal + match[2] : beforeDecimal;
   }
 
-  return match[2] !== undefined ? beforeDecimal + match[2] : beforeDecimal;
+  return this;
 };
 
 String.prototype.fromCurrency = function() {
   var regex = /^\d{1,3}(,\d{3})+(\.\d{2})?$/;
-  var match = regex.test(this);
 
-  if (match) {
+  if (regex.test(this)) {
     return +this.replace(/\,/g, "");
   }
   return "valid string must have commas";
