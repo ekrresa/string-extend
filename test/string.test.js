@@ -12,4 +12,9 @@ describe("String method tests", function() {
     expect("esther seyi ochuko".toUpper()).toBe("ESTHER SEYI OCHUKO");
     expect("why So SERious".toUpper()).toBe("WHY SO SERIOUS");
   });
+  test("should convert string to lowercase", function() {
+    expect("ochuko".toLower()).toBe("ochuko");
+    expect("ESTHER SEYI OCHUKO".toLower()).toBe("esther seyi ochuko");
+    expect("WHy So 453sdj SERious".toLower()).toBe("why so 453sdj serious");
+  });
 });

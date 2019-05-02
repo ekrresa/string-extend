@@ -14,5 +14,17 @@ String.prototype.toUpper = function() {
   }
   return output;
 };
+String.prototype.toLower = function() {
+  var output = "";
+  for (var char of this) {
+    if (/[A-Z]/.test(char)) {
+      lowerCaseCharCode = char.charCodeAt() + 32;
+      output += String.fromCharCode(lowerCaseCharCode);
+      continue;
+    }
+    output += char;
+  }
+  return output;
+};
 
 module.exports = String.prototype;
