@@ -18,6 +18,10 @@ String.prototype.ucFirst = function() {
   throw "Error: String must begin with an alphabet";
 };
 
+String.prototype.isQuestion = function() {
+  return this.match(/\?$/) !== null ? true : false;
+};
+
 function changeCase(signedNum) {
   var regex = signedNum < 0 ? /[a-z]/ : /[A-Z]/;
   var output = "";
